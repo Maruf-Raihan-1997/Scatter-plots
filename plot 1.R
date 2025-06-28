@@ -69,3 +69,7 @@ ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl), shape = factor(cyl), li
   geom_smooth(method = "lm", se = FALSE) +
   scale_linetype_manual(values = c("dotted", "dashed", "solid")) +
   theme_minimal()
+
+
+
+
