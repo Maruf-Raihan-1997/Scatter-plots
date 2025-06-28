@@ -18,7 +18,7 @@ ggplot(dataset , aes (x= wt, y= mpg))+
 ggplot(dataset , aes (x= wt, y= mpg))+
   geom_point(size= 1, shape = 1)
 
-#best fit/ regression line
+#best fit/ regression line using leaner model
 
 
 ggplot(dataset , aes (x= wt, y= mpg))+
@@ -72,4 +72,53 @@ ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl), shape = factor(cyl), li
 
 
 
+#Removing the CI
+
+library(ggplot2)
+
+data("mtcars")
+
+ggplot(data = mtcars , aes (x= wt, y= mpg))+
+  geom_point()+
+  geom_smooth(method= lm, se= FALSE)
+
+
+#Loess line
+#it creates neighbourhood scatter line,
+#meaning it touches all neihgbouring line
+
+
+ggplot(data = mtcars , aes (x= wt, y= mpg))+
+  geom_point()+
+  geom_smooth()
+
+#changing line type and colour
+
+ggplot(data = mtcars , aes (x= wt, y= mpg))+
+  geom_point(size=1, shape=18)+
+  geom_smooth(method=lm, linetype= "dashed")
+
+
+ggplot(data = mtcars , aes (x= wt, y= mpg, shape = cyl))+
+  geom_point(size=1, shape=18)+
+  geom_smooth(method=lm, linetype= "dashed",
+              color = "orange")
+
+
+#multiple line/ factor variable
+
+
+library(ggplot2)
+
+dataset=mtcars
+
+dataset$cyl
+
+dataset$cyl= as.factor(dataset$cyl)
+
+is.vector("cyl")
+
+ggplot(dataset, aes (x= wt, y= mpg, shape = cyl, color= cyl, 
+                     size= cyl))+
+  geom_point()
 
