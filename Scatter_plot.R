@@ -122,3 +122,40 @@ ggplot(dataset, aes (x= wt, y= mpg, shape = cyl, color= cyl,
                      size= cyl))+
   geom_point()
 
+# Scatter plot 3
+
+library(ggplot2)
+dataset= mtcars
+View(dataset)
+
+#converting cyl to factor
+
+dataset$cyl = as.factor(dataset$cyl)
+
+
+# regrression lines based on multiple groups
+
+ggplot(dataset, aes (x= wt, y= mpg, color=cyl, shape= cyl))+
+  geom_point()+
+  geom_smooth(method=lm,se= FALSE, fullrange=TRUE)+
+  scale_shape_manual(values=c (4,3,17))+
+  scale_color_manual(values=c ('green','red','black'))+
+  labs(title = "Miles per gallon \n according to the weight",
+       x="weight", y= "miles per gallon")+
+  theme(legend.position = "top")
+
+
+
+plot= ggplot(dataset, aes (x= wt, y= mpg, color=cyl, shape= cyl))+
+  geom_point()+
+  geom_smooth(method=lm,se= FALSE, fullrange=TRUE)+
+  scale_shape_manual(values=c (4,3,17))+
+  scale_color_manual(values=c ('green','red','black'))+
+  labs(title = "Miles per gallon according to the \n weight",
+       x="weight", y= "miles per gallon")+
+  theme(legend.position = "top")
+
+
+plot+ theme_classic()
+plot+ theme_minimal()
+
